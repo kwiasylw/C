@@ -4,7 +4,7 @@
 
 int main(){
     FILE *out;
-    int i, n;
+    int i,n;
     char filename[20];
     srand(time(0));
     printf("Program generuje wybrana ilosc liczb calkowitych i zapisuje je do wybranego pliku\n");
@@ -16,7 +16,7 @@ int main(){
     else{
         printf("Podaj nazwe pliku: ");
         scanf("%s",filename);
-        out = fopen(filename,"w");
+        out=fopen(filename,"w");
 
         if (out) {
         for(i=0;i<n;++i) {
