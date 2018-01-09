@@ -16,7 +16,7 @@ int main(){
     else{
         printf("Podaj nazwe pliku: ");
         scanf("%s",filename);
-        out = fopen(filename, "w");
+        out = fopen(filename,"w");
 
         if (out) {
         for(i=0;i<n;++i) {
