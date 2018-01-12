@@ -9,7 +9,7 @@ int main(){
     srand(time(0));
     printf("Program generuje wybrana ilosc liczb calkowitych i zapisuje je do wybranego pliku\n");
     printf("Podaj ilosc liczb do wygenerowania: ");
-    scanf("%d", &n);
+    scanf("%d",&n);
     if (n<1){
         printf("ERROR\nWprowadzona bledna wartosc\n");
     }
