@@ -1,39 +1,39 @@
 #include<stdio.h>
 #include<math.h>
 
-float stopnieNaRad(void){
-    float stopnie;
+float stopnieNaradianyiany(void){
+    float stopnie, radiany;
     printf("\nWpisz kat w stopniach: ");
     scanf("%f",&stopnie);
-    stopnie=stopnie*M_PI/180;
-    printf("Wartosc w radianach wynosi: %.3f\n\n",stopnie);
+    radiany=stopnie*M_PI/180;
+    printf("Wartosc w radianach wynosi: %.3f\n\n",radiany);
 }
 
-float radNaStopnie(void){
-    float rad;
-    printf("\nWpisz kat w radianach: ");
-    scanf("%f",&rad);
-    rad=rad*180/M_PI;
-    printf("Wartosc w stopniach wynosi: %.3f\n\n",rad);
+float radianyNaStopnie(void){
+    float radiany, stopnie;
+    printf("\nWpisz kat w radianyianach: ");
+    scanf("%f",&radiany);
+    stopnie=radiany*180/M_PI;
+    printf("Wartosc w stopniach wynosi: %.3f\n\n",stopnie);
 }
 
 int main(void){
-    int wyjscie=0,opcja=0;
+    int wyjscie=0, opcja=0;
     printf("Konwerter stopnie <-> radiany\n\n");
     while (wyjscie==0){
         printf("Wybierz jedna z ponizszych opcji: "
                "\n\t1: Zamiana stopni na radiany"
-               "\n\t2: Zamiana radianow na stopnie"
+               "\n\t2: Zamiana radianyianow na stopnie"
                "\n\t3: Wyjscie"
                "\n\nWybor: ");
         scanf("%d",&opcja);
         switch (opcja){
         case 1:
-            stopnieNaRad();
+            stopnieNaradianyiany();
             break;
 
         case 2:
-            radNaStopnie();
+            radianyNaStopnie();
             break;
 
         case 3:
@@ -47,4 +47,3 @@ int main(void){
     }
     return 0;
 }
-
