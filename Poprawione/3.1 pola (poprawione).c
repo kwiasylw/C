@@ -91,7 +91,7 @@ int coObliczyc(void){
     printf("\nWybierz, co chcesz obliczyc:\n\t1: pole\n\t2: obwod\n");
     printf("\nObliczam: ");
     scanf("%d",&wyborDzialania);
-    if ((wyborDzialania!=1)&&(wyborDzialania!=2)){
+    if ((wyborDzialania!=1) && (wyborDzialania!=2)){
         printf("Wpisano zla wartosc\n");
         coObliczyc();
     }
@@ -108,7 +108,7 @@ int sprawdzCzyNieujemnaWartosc(double a){
 }
 
 int sprawdzCzyTrojkatOTakichBokachIstnieje(double a, double b, double c){
-    if ((a+b>c)&&(b+c>a)&&(a+c>b)){
+    if ((a+b>c) && (b+c>a) && (a+c>b)){
         return 0;
     }
     else{
