@@ -1,19 +1,19 @@
 #include <stdio.h>
 
-void fahrNaCel(void){
-    float tempF;
+void fahrenheityNaCelsjusze(void){
+    float tempWFahrenheitach, tempWCelsjuszach;
     printf("Wpisz temperature w stopniach Fahrenheita: ");
-    scanf("%f",&tempF);
-    tempF= (tempF-32)/1.8;
-    printf("Temperatura w stopniach Celsjusza wynosi: %.2f\n",tempF);
+    scanf("%f",&tempWFahrenheitach);
+    tempWCelsjuszach=(tempWFahrenheitach-32)/1.8;
+    printf("Temperatura w stopniach Celsjusza wynosi: %.2f\n", tempWCelsjuszach);
 }
 
-void celNaFahr(void){
-    float tempC;
+void celsjuszeNaFahrenheity(void){
+    float tempWCelsjuszach, tempWFahrenheitach;
     printf("Wpisz temperature w stopniach Celsjusza: ");
-    scanf("%f",&tempC);
-    tempC=(tempC*1.8)+32;
-    printf("Temperatura w stopniach Fahrenheita wynosi: %.2f\n",tempC);
+    scanf("%f",&tempWCelsjuszach);
+    tempWFahrenheitach=(tempWCelsjuszach*1.8)+32;
+    printf("Temperatura w stopniach Fahrenheita wynosi: %.2f\n", tempWFahrenheitach);
 }
 
 int main(){
@@ -24,10 +24,10 @@ int main(){
     printf("\nWpisz wybor (1 lub 2): ");
     scanf("%d",&wybor);
     if(wybor==1){
-        fahrNaCel();
+        fahrenheityNaCelsjusze();
     }
     else if(wybor==2){
-        celNaFahr();
+        celsjuszeNaFahrenheity();
     }
     else{
         printf("\nZly wybor");
