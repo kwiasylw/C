@@ -10,7 +10,7 @@ Vector *reserve(Vector *vect){
         printf("\nAlokacja struktury nie powiodla sie.\n\n");
         return NULL;
     }
-    if(vect==NULL||vect->numOfElem==0){
+    if(vect==NULL || vect->numOfElem==0){
         pom->tablica=(int*)malloc(sizeof(int));
         pom->capacity=sizeof(int);
         pom->numOfElem=0;
@@ -74,11 +74,11 @@ void insert(Vector *vect){
         printf("\nBlad przy realokacji. Trzeba ponownie zaalokowac.\n");
         return;
     }
-    if(miejsce>size(vect)||miejsce<=0){
+    if(miejsce>size(vect) || miejsce<=0){
         printf("\nLiczba wykracza poza zakres tablicy.\n");
         return;
     }
-    else if(miejsce==1&&size(vect)==0){
+    else if(miejsce==1 && size(vect)==0){
         vect->tablica=(int*)realloc(vect->tablica,(vect->numOfElem+1)*sizeof(int));
         scanf("%d",&(vect->tablica[0]));
     }
@@ -96,11 +96,11 @@ void removeElement(Vector *vect){
     int miejsce,i;
     printf("\nKtory element chcesz usunac: ");
     scanf("%d",&miejsce);
-    if(miejsce>size(vect)||miejsce<=0){
+    if(miejsce>size(vect) || miejsce<=0){
         printf("\nLiczba wykracza poza zakres tablicy.\n\n");
         return;
     }
-    else if(miejsce==1&&size(vect)==1){
+    else if(miejsce==1 && size(vect)==1){
         free(vect->tablica);
         (vect->numOfElem)--;
         vect->capacity-=sizeof(int);
