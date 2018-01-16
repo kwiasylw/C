@@ -2,8 +2,12 @@
 #include <math.h>
 #include <stdlib.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 int sprawdzCzyNieujemnaWartosc(double);
-int coObliczyc(void);
+int wybierzPoleLubObwod(void);
 int sprawdzCzyTrojkatOTakichBokachIstnieje(double,double,double);
 void obliczeniaDlaKwadratu(void);
 void obliczeniaDlaProstokata(void);
@@ -16,7 +20,7 @@ void obliczeniaDlaKwadratu(void){
     printf("Wpisz dlugosc boku kwadratu: ");
     scanf("%lf",&aKwadrat);
     sprawdzCzyNieujemnaWartosc(aKwadrat);
-    int wyborDzialania=coObliczyc();
+    int wyborDzialania=wybierzPoleLubObwod();
     if (wyborDzialania==1){
         double poleKwadratu=aKwadrat*aKwadrat;
         printf("\nPole kwadratu wynosi %.2lf\n\n",poleKwadratu);
@@ -33,7 +37,7 @@ void obliczeniaDlaProstokata(void){
     scanf("%lf %lf",&aProstokat,&bProstokat);
     sprawdzCzyNieujemnaWartosc(aProstokat);
     sprawdzCzyNieujemnaWartosc(bProstokat);
-    int wyborDzialania=coObliczyc();
+    int wyborDzialania=wybierzPoleLubObwod();
     if (wyborDzialania==1){
         double poleProstokata=aProstokat*bProstokat;
         printf("\nPole prostokata wynosi %.2lf\n\n",poleProstokata);
@@ -59,7 +63,7 @@ void obliczeniaDlaTrojkata(void){
         printf("Trojkat o takich bokach nie istnieje lub podano ujemne wartosci. \nZacznijmy jeszcze raz.\n\n");
         obliczeniaDlaTrojkata();
     }
-    int wyborDzialania=coObliczyc();
+    int wyborDzialania=wybierzPoleLubObwod();
     if (wyborDzialania==1){
         double poleTrojkata=aTrojkat*wysokoscTrojkata/2;
         printf("\nPole trojkata wynosi %.2lf\n\n",poleTrojkata);
@@ -75,7 +79,7 @@ void obliczeniaDlaKola(void){
     printf("Podaj dlugosc promienia kola: ");
     scanf("%lf",&r);
     sprawdzCzyNieujemnaWartosc(r);
-    int wyborDzialania=coObliczyc();
+    int wyborDzialania=wybierzPoleLubObwod();
     if (wyborDzialania==1){
         double poleKola=M_PI*r*r;
         printf("\nPole kola wynosi %.2lf\n\n",poleKola);
@@ -86,14 +90,14 @@ void obliczeniaDlaKola(void){
     }
 }
 
-int coObliczyc(void){
+int wybierzPoleLubObwod(void){
     const int wyborDzialania;
     printf("\nWybierz, co chcesz obliczyc:\n\t1: pole\n\t2: obwod\n");
     printf("\nObliczam: ");
     scanf("%d",&wyborDzialania);
     if ((wyborDzialania!=1) && (wyborDzialania!=2)){
         printf("Wpisano zla wartosc\n");
-        coObliczyc();
+        wybierzPoleLubObwod();
     }
     return wyborDzialania;
 }
