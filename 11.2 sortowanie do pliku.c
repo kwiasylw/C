@@ -2,6 +2,26 @@
 #include <stdlib.h>
 
 
+void generowanieDoPliku(int n, int tab[]){
+    FILE *out;
+    char filename[20];
+    printf("Podaj nazwe pliku docelowego: ");
+    scanf("%s", filename);
+    out=fopen(filename, "w");
+    if (out){
+        fprintf(out,"Posortowane liczby:\n");
+        for(int i=0; i<n; ++i){
+            fprintf(out, "%d ", tab[i]);
+        }
+        printf("Dane zostaly zapisane w wybranym pliku.\n");
+        fclose(out);
+    }
+    else{
+        printf("ERROR\nWprowadzona bledna nazwe\n");
+        exit(1);
+    }
+}
+
 void sortowanie(int n, int tab[]){
     int temp;
     for (int i=0; i<n; ++i) {
@@ -16,30 +36,23 @@ void sortowanie(int n, int tab[]){
 }
 
 int main(){
-    FILE *in, *out;
-    int i=0, totalNum, tab[100];
-    char line[100], filename1[20], filename2[20];
+    FILE *in;
+    int i=0, a, totalNum, tab[100];
+    char  filename[20];
     printf("Program pobiera liczby z I programuje, sortuje je i zapisuje do II pliku.\n\n");
     printf("Podaj nazwe pliku do pobrania danych: ");
-    scanf("%s", filename1);
-    printf("\nPodaj nazwe pliku docelowego: ");
-    scanf("%s", filename2);
-    in=fopen(filename1, "r");
-    out=fopen(filename2, "w");
-    if((in) && (out)){
-        while(fgets(line, sizeof line, in)!=NULL) {
-            tab[i]=atoi(line);
+    scanf("%s", filename);
+    in=fopen(filename, "r");
+    if(in){
+        while(!feof(in)) {
+            fscanf(in, "%d ", &a);
+            tab[i]=a;
             i++;
         }
+        fclose(in);
         totalNum=i;
         sortowanie(totalNum, tab);
-        fprintf(out,"Posortowane liczby:\n");
-        for(i=0; i<totalNum; ++i){
-            fprintf(out, "%d\n", tab[i]);
-        }
-        printf("Dane zostaly zapisane w wybranym pliku.");
-        fclose(in);
-        fclose(out);
+        generowanieDoPliku(totalNum, tab);
     }
     else{
         printf("\nERROR\nWprowadzona bledna nazwe\n");
