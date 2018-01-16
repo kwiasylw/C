@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <math.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 float liczenieDelty(int a, int b, int c){
     float delta=b*b-4.*a*c;
-    float pierwiastek,x1,x2;
+    float pierwiastek, x1, x2;
     printf("\nDelta wynosi: %.1f \n", delta);
     if (delta<0){
         printf("\nBrak rozwiazan\n");
@@ -30,7 +34,7 @@ int main(void){
         printf("Wspolczynnik a musi byc rozny od zera!!\n");
     }
     else{
-        liczenieDelty(a,b,c);
+        liczenieDelty(a, b, c);
     }
     return 0;
 }
