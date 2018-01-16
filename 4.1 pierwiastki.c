@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
 
 float liczenieDelty(int a, int b, int c){
     float delta=b*b-4.*a*c;
