@@ -4,17 +4,17 @@
 float stopnieNaradianyiany(void){
     float stopnie, radiany;
     printf("\nWpisz kat w stopniach: ");
-    scanf("%f",&stopnie);
+    scanf("%f", &stopnie);
     radiany=stopnie*M_PI/180;
-    printf("Wartosc w radianach wynosi: %.3f\n\n",radiany);
+    printf("Wartosc w radianach wynosi: %.3f\n\n", radiany);
 }
 
 float radianyNaStopnie(void){
     float radiany, stopnie;
     printf("\nWpisz kat w radianyianach: ");
-    scanf("%f",&radiany);
+    scanf("%f", &radiany);
     stopnie=radiany*180/M_PI;
-    printf("Wartosc w stopniach wynosi: %.3f\n\n",stopnie);
+    printf("Wartosc w stopniach wynosi: %.3f\n\n", stopnie);
 }
 
 int main(void){
@@ -26,7 +26,7 @@ int main(void){
                "\n\t2: Zamiana radianyianow na stopnie"
                "\n\t3: Wyjscie"
                "\n\nWybor: ");
-        scanf("%d",&opcja);
+        scanf("%d", &opcja);
         switch (opcja){
         case 1:
             stopnieNaradianyiany();
