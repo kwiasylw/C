@@ -2,7 +2,7 @@
 
 int main(){
     printf("***Program wyswietla dany miesiac***\n");
-    int i,miesiac,dni,start;
+    int i, miesiac, dni, start;
     printf("Podaj numer miesiaca (1-12): ");
     scanf("%d", &miesiac);
     if(miesiac==1 || miesiac==3 || miesiac==5 || miesiac==7 || miesiac==8 || miesiac==10 || miesiac==12){
@@ -14,7 +14,7 @@ int main(){
    else if(miesiac==2){
         int przestepny;
         printf("Czy rok jest przestepny? Wpisz 1(tak) lub 2(nie): ");
-        scanf("%d",&przestepny);
+        scanf("%d", &przestepny);
         switch(przestepny){
         case 1:
             dni=29;
@@ -29,7 +29,7 @@ int main(){
     }
     else{
         printf("ERROR. Podaj liczbe od 1 do 12.");
-            scanf("%d",&miesiac);
+            scanf("%d", &miesiac);
     }
 
     puts("\nKtorego dnia rozpoczyna sie miesiac?");
@@ -41,10 +41,10 @@ int main(){
     puts("\t*Sobota\t\t- wybierz 6");
     puts("\t*Niedziela\t- wybierz 7");
     printf("\nWpisz liczbe (1-7): ");
-    scanf("%d",&start);
+    scanf("%d", &start);
 
     puts("\nPON\tWT\tSR\tCZW\tPT\tSOB\tNDZ\n");
-    for(i=1;i<=dni+start-1;i++){
+    for(i=1; i<=dni+start-1; i++){
         if(i<start){
             printf(" \t");
         }
