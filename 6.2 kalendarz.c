@@ -2,7 +2,7 @@
 
 int main(){
     printf("***Program wyswietla dany miesiac***\n");
-    int i, miesiac, dni, start;
+    int miesiac, dni, start;
     printf("Podaj numer miesiaca (1-12): ");
     scanf("%d", &miesiac);
     if(miesiac==1 || miesiac==3 || miesiac==5 || miesiac==7 || miesiac==8 || miesiac==10 || miesiac==12){
@@ -44,15 +44,16 @@ int main(){
     scanf("%d", &start);
 
     puts("\nPON\tWT\tSR\tCZW\tPT\tSOB\tNDZ\n");
-    for(i=1; i<=dni+start-1; i++){
+    for(int i=1; i<=dni+start-1; i++){
         if(i<start){
             printf(" \t");
         }
         else{
             printf("%d\t",i-start+1);
         }
-        if((i%7)==0)  //przejscie do nowej linii co 7 dni
+        if((i%7)==0){ //przejscie do nowej linii co 7 dni
             printf("\n");
+        }
     }
     return 0;
 }
