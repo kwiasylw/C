@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #define ZAKRESMAX 255
 
 int main(void){
