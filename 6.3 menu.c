@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void losowanie(int a[],int n){
+void losowanie(int a[], int n){
     srand(time(NULL));
     for(int i=0; i<n; i++){
         a[i]=rand()%40;
@@ -41,7 +41,6 @@ void sortowanie(int a[], int n){
 
 void mediana(int a[10]){
     float mediana;
-    int i, j, temp;
     losowanie(a, 10);
     sortowanie(a, 10);
     mediana=(a[4]+a[5])/2;
@@ -50,9 +49,7 @@ void mediana(int a[10]){
 }
 
 void minMax(int a[10]){
-    int min=a[0];
-    int max=a[0];
-    int j;
+    int min=a[0], max=a[0];
     for(int i=0; i<10; i++){
         if(a[i]>max){
             max=a[i];
@@ -63,7 +60,7 @@ void minMax(int a[10]){
             min=a[i];
         }
     }
-    printf("\nElement minimalny: %d\nElement maksymalny: %d",min,max);
+    printf("\nElement minimalny: %d\nElement maksymalny: %d", min, max);
     }
 
 
@@ -79,7 +76,7 @@ int main(void){
         scanf("%d", &wybor);
         switch(wybor){
             case 1:
-                losowanie(a,10);
+                losowanie(a, 10);
                 break;
             case 2:
                 wypisywanie(a);
