@@ -15,14 +15,14 @@ void menu(Vector *vect){
     printf("8. Zwrocic N-ty element.\n");
     printf("9. Zakonczyc dzialanie programu.\n");
     printf("\n\nTWOJ WYBOR: ");
-    scanf("%d",&wybor);
+    scanf("%d", &wybor);
     switch(wybor){
         case 1:
-            printf("\nAktualna ilosc elementow: %d\n\n",size(vect));
+            printf("\nAktualna ilosc elementow: %d\n\n", size(vect));
             return menu(vect);
             break;
         case 2:
-            printf("\nAktualna ilosc zajetej pamieci: %d bit\n\n",capacity(vect));
+            printf("\nAktualna ilosc zajetej pamieci: %d bit\n\n", capacity(vect));
             return menu(vect);
             break;
         case 3:
