@@ -4,7 +4,6 @@
 
 Vector *reserve(Vector *vect){
     Vector *pom;
-    int i=0;
     pom=(Vector*)malloc(sizeof(Vector));
     if(pom==NULL){
         printf("\nAlokacja struktury nie powiodla sie.\n\n");
@@ -22,7 +21,7 @@ Vector *reserve(Vector *vect){
         free(pom);
         return NULL;
     }
-    for(i=0;i<(vect->numOfElem);i++){
+    for(int i=0; i<(vect->numOfElem); i++){
         pom->tablica[i]=vect->tablica[i];
     }
     pom->capacity=capacity(vect);
@@ -52,13 +51,13 @@ void push_back(Vector *vect){
         printf("\nStruktura nie zostala zaalokowana.\n");
         return;
     }
-    vect->tablica=(int*)realloc(vect->tablica,(vect->numOfElem+1)*sizeof(int));
+    vect->tablica=(int*)realloc(vect->tablica, (vect->numOfElem+1)*sizeof(int));
     if(vect->tablica==NULL){
         printf("\nBlad przy realokacji.\n");
         return;
     }
     printf("\nPodaj liczbe do dodania na koncu tablicy: ");
-    scanf("%d",&(vect->tablica[vect->numOfElem]));
+    scanf("%d", &(vect->tablica[vect->numOfElem]));
     (vect->numOfElem)++;
     if(size(vect)==1){
         return;
@@ -67,7 +66,7 @@ void push_back(Vector *vect){
 }
 
 void insert(Vector *vect){
-    int miejsce,i;
+    int miejsce;
     printf("W ktore miejsce listy chcesz wstawic liczbe: ");
     scanf("%d",&miejsce);
     if(vect->tablica==NULL){
@@ -83,7 +82,7 @@ void insert(Vector *vect){
         scanf("%d",&(vect->tablica[0]));
     }
     vect->tablica=(int*)realloc(vect->tablica,(vect->numOfElem+1)*sizeof(int));
-    for(i=size(vect);i>miejsce-1;i--){
+    for(int i=size(vect); i>miejsce-1; i--){
         vect->tablica[i]=vect->tablica[i-1];
     }
     printf("\nPodaj liczbe do dodania: ");
@@ -93,9 +92,9 @@ void insert(Vector *vect){
 }
 
 void removeElement(Vector *vect){
-    int miejsce,i;
+    int miejsce;
     printf("\nKtory element chcesz usunac: ");
-    scanf("%d",&miejsce);
+    scanf("%d", &miejsce);
     if(miejsce>size(vect) || miejsce<=0){
         printf("\nLiczba wykracza poza zakres tablicy.\n\n");
         return;
@@ -105,7 +104,7 @@ void removeElement(Vector *vect){
         (vect->numOfElem)--;
         vect->capacity-=sizeof(int);
     }
-    for(i=miejsce-1;i<size(vect)-1;i++){
+    for(int i=miejsce-1; i<size(vect)-1; i++){
         vect->tablica[i]=vect->tablica[i+1];
     }
     vect->tablica=(int*)realloc(vect->tablica,(vect->numOfElem-1)*sizeof(int));
@@ -128,10 +127,10 @@ void reverse(Vector *vect){
 void at(Vector *vect){
     int n;
     printf("Ktory element chcesz pobrac: ");
-    scanf("%d",&n);
+    scanf("%d", &n);
     if(n>size(vect)){
         printf("\nTen element nie istnieje.\n");
         return;
     }
-    printf("\n%d element = %d\n",n,vect->tablica[n-1]);
+    printf("\n%d element = %d\n", n, vect->tablica[n-1]);
 }
