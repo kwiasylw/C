@@ -8,7 +8,7 @@ void funkcja1 (const char *tekst, va_list argumenty){
         if (wartosc=="%d"){
             scanf("%s",&wartosc);
         }
-    printf("%s", wartosc);
+        printf("%s", wartosc);
     }
 }
 
@@ -20,6 +20,6 @@ void funkcja2 (const char *tekst, ...) {
 }
 
 int main (int argc, char *argv[]) {
-    funkcja2("Podaj ","dluzszy ", "bok ", "prostokata: ", "%d","A"," teraz", " krotszy: ","%d", NULL);
+    funkcja2("Podaj ","dluzszy ","bok ","prostokata: ","%d","A"," teraz"," krotszy: ","%d",NULL);
     return 0;
 }
