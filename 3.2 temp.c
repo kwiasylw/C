@@ -22,7 +22,7 @@ int main(){
     printf("\t1: stopnie Fahrenheita -> stopnie Celsjusza\n");
     printf("\t2: stopnie Celsiusza -> Fahrenheita\n");
     printf("\nWpisz wybor (1 lub 2): ");
-    scanf("%d",&wybor);
+    scanf("%d", &wybor);
     if(wybor==1){
         fahrenheityNaCelsjusze();
     }
