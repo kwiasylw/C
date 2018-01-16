@@ -29,7 +29,7 @@ int main(){
     }
     else{
         printf("ERROR. Podaj liczbe od 1 do 12.");
-            scanf("%d", &miesiac);
+            scanf("%d",&miesiac);
     }
 
     puts("\nKtorego dnia rozpoczyna sie miesiac?");
