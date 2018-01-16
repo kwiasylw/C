@@ -3,9 +3,9 @@
 
 
 void sortowanie(int n, int tab[]){
-    int i,j,temp;
-    for (i=0;i<n;++i) {
-        for(j=0;j<(n-1);++j){
+    int temp;
+    for (int i=0; i<n; ++i) {
+        for(int j=0; j<(n-1); ++j){
             if(tab[j]>tab[j+1]){
                 temp=tab[j];
                 tab[j]=tab[j+1];
@@ -16,17 +16,17 @@ void sortowanie(int n, int tab[]){
 }
 
 int main(){
-    FILE *in,*out;
+    FILE *in, *out;
     int i=0,totalNum,tab[100];
     char line[100],filename1[20],filename2[20];
     printf("Program pobiera liczby z I programuje, sortuje je i zapisuje do II pliku.\n\n");
     printf("Podaj nazwe pliku do pobrania danych: ");
-    scanf("%s",filename1);
+    scanf("%s", filename1);
     printf("\nPodaj nazwe pliku docelowego: ");
-    scanf("%s",filename2);
+    scanf("%s", filename2);
     in=fopen(filename1, "r");
     out=fopen(filename2, "w");
-    if((in)&&(out)){
+    if((in) && (out)){
         while(fgets(line, sizeof line, in)!=NULL) {
             tab[i]=atoi(line);
             i++;
@@ -34,8 +34,8 @@ int main(){
         totalNum=i;
         sortowanie(totalNum,tab);
         fprintf(out,"Posortowane liczby:\n");
-        for(i=0;i<totalNum;++i){
-            fprintf(out,"%d\n",tab[i]);
+        for(i=0; i<totalNum; ++i){
+            fprintf(out, "%d\n", tab[i]);
         }
         printf("Dane zostaly zapisane w wybranym pliku.");
         fclose(in);
