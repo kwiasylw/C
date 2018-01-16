@@ -10,22 +10,22 @@ float liczenieDelty(int a, int b, int c){
     }
     if(delta==0){
         x1=-b/2*a;
-        printf("Pierwiastek rownania: %.1f\n",x1);
+        printf("Pierwiastek rownania: %.1f\n", x1);
     }
     if (delta>0){
         pierwiastek=sqrt(delta);
         x1=(-b-pierwiastek)/2*a;
         x2=(-b+pierwiastek)/2*a;
-        printf("\nPierwiastki rownania to %.1f, %.1f \n",x1,x2);
+        printf("\nPierwiastki rownania to %.1f, %.1f \n", x1, x2);
     }
 }
 
 int main(void){
     printf("Program liczy pierwiastki rownania kwadratowego.\n\n");
-    int a,b,c;
+    int a, b, c;
     printf("Podaj wartosci wspolczynnikow: ax^2+bx+c (oddzielone spacjami)\n");
     printf("Wspolczynniki a b c : ");
-    scanf("%d %d %d",&a,&b,&c);
+    scanf("%d %d %d", &a, &b, &c);
     if (a==0){
         printf("Wspolczynnik a musi byc rozny od zera!!\n");
     }
