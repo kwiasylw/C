@@ -2,18 +2,18 @@
 #include <stdlib.h>
 #include <time.h>
 
-
-void losowanie(int a[10]){
+void losowanie(int a[],int n){
     int i;
     srand(time(NULL));
-    for(i=0;i<10;i++){
+    for(i=0;i<n;i++){
         a[i]=rand()%40;
     }
+    puts("Elementy tablicy zostaly wylosowane.");
 }
 
 void wypisywanie(int a[10]){
     int i;
-    losowanie(a);
+    losowanie(a,10);
     puts("\nTablica:");
     for(i=0;i<10;i++){
         printf("%d ",a[i]);
@@ -29,13 +29,10 @@ void srednia(int a[10]){
     printf("\nSrednia elementow tablicy: %.2f\n",wynik/10);
 }
 
-void mediana(int a[10]){
-    float mediana;
+void sortowanie(int a[],int n){
     int i,j,temp;
-    losowanie(a);
-    //sortowanie babelkowe
-    for(i=0;i<9;i++){
-        for(j=0;j<9-i;j++){
+    for(i=0;i<n;i++){
+        for(j=0;j<n-1-i;j++){
             if (a[j]>a[j+1]){
                 temp=a[j];
                 a[j]=a[j+1];
@@ -43,6 +40,13 @@ void mediana(int a[10]){
             }
         }
     }
+}
+
+void mediana(int a[10]){
+    float mediana;
+    int i,j,temp;
+    losowanie(a,10);
+    sortowanie(a,10);
     mediana=(a[4]+a[5])/2;
     printf("\nMediana elementow tablicy: %.2f",mediana);
 
@@ -78,7 +82,7 @@ int main(int argc, char *argv[]){
         scanf("%d",&wybor);
         switch(wybor){
             case 1:
-                losowanie(a);
+                losowanie(a,10);
                 break;
             case 2:
                 wypisywanie(a);
