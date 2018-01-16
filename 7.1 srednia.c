@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 
 void losowanieWartosci(int n, int tab[n]){
-    int j;
     srand(time(NULL));
     for(int i=0; i<n; i++){
         tab[i]=rand()%30;
