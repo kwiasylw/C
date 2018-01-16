@@ -49,7 +49,7 @@ int main(){
             printf(" \t");
         }
         else{
-            printf("%d\t",i-start+1);
+            printf("%d\t", i-start+1);
         }
         if((i%7)==0){ //przejscie do nowej linii co 7 dni
             printf("\n");
