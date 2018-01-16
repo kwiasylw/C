@@ -1,68 +1,49 @@
 #include<stdio.h>
 #include<math.h>
-#include<stdlib.h>
-#include<conio.h> //do obslugi getch()
 
-
-float StopnieNaRad(float stopnie)
-{
-    float rad=stopnie*M_PI/180;
-    return rad;
+float stopnieNaradianyiany(void){
+    float stopnie, radiany;
+    printf("\nWpisz kat w stopniach: ");
+    scanf("%f",&stopnie);
+    radiany=stopnie*M_PI/180;
+    printf("Wartosc w radianach wynosi: %.3f\n\n",radiany);
 }
 
-float RadNaStopnie(float rad)
-{
-    float stopnie=rad*180/M_PI;
-    return stopnie;
+float radianyNaStopnie(void){
+    float radiany, stopnie;
+    printf("\nWpisz kat w radianyianach: ");
+    scanf("%f",&radiany);
+    stopnie=radiany*180/M_PI;
+    printf("Wartosc w stopniach wynosi: %.3f\n\n",stopnie);
 }
 
-int main(void)
-{
+int main(void){
     int wyjscie=0, opcja=0;
-    float stopnie=0, rad=0, kat=0;
+    printf("Konwerter stopnie <-> radiany\n\n");
     while (wyjscie==0){
-        system("cls");
-        printf("Konwerter stopnie <-> radiany\n\n");
         printf("Wybierz jedna z ponizszych opcji: "
                "\n\t1: Zamiana stopni na radiany"
-               "\n\t2: Zamiana radianow na stopnie"
+               "\n\t2: Zamiana radianyianow na stopnie"
                "\n\t3: Wyjscie"
                "\n\nWybor: ");
         scanf("%d",&opcja);
-
         switch (opcja){
         case 1:
-            printf("\nWpisz kat w stopniach: ");
-            scanf("%f",&stopnie);
-            kat=StopnieNaRad(stopnie);
-            printf("Wartosc w radianach wynosi: %.3f",kat);
-            getch();
+            stopnieNaradianyiany();
             break;
-
 
         case 2:
-            printf("\nWpisz kat w radianach: ");
-            scanf("%f",&rad);
-            kat=RadNaStopnie(rad);
-            printf("Wartosc w stopniach wynosi: %.3f",kat);
-            getch();
+            radianyNaStopnie();
             break;
-
 
         case 3:
             wyjscie=1;
             break;
 
-
         default:
-            printf("\nWybrano zla opcje. Wpisz ponownie");
-            getch();
+            puts("\nWybrano zla opcje. ");
             break;
         }
     }
-
-printf("\nNacisnij cokolwiek, aby zamknac program.");
-getch();
-return 0;
+    return 0;
 }
-
