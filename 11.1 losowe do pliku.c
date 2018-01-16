@@ -11,7 +11,7 @@ void generowanieDoPliku(int n){
     out=fopen(filename, "w");
     if (out){
         for(int i=0; i<n; ++i){
-            fprintf(out, "%d\n", rand()%1000);
+            fprintf(out, "%d ", rand()%1000);
         }
         printf("Dane zostaly zapisane w wybranym pliku.\n");
         fclose(out);
