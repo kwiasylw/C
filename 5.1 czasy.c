@@ -8,9 +8,9 @@ enum IndeksCzasu{
 
 
 void podawanieDanych(int n, int czas[n]){
-    for(int i=0;i<n;++i){
-        printf("\t%d wartosc: ",i+1);
-        scanf("%d",&czas[i]);
+    for(int i=0; i<n; ++i){
+        printf("\t%d wartosc: ", i+1);
+        scanf("%d", &czas[i]);
     }
 }
 
@@ -24,14 +24,14 @@ int sprawdzPoprawnoscDanych(int godzina, int minuta, int sekunda){
     }
 }
 
-int porownywanieCzasow(int n,int czas1[n], int czas2[n]){
+int porownywanieCzasow(int n, int czas1[n], int czas2[n]){
     int j;
     if ( (sprawdzPoprawnoscDanych(czas1[INDEKS_GODZINY],czas1[INDEKS_MINUTY],czas1[INDEKS_SEKUNDY]))
         || (sprawdzPoprawnoscDanych(czas2[INDEKS_GODZINY],czas2[INDEKS_MINUTY],czas2[INDEKS_SEKUNDY])) ){
         return 2;
     }
     else{
-        for (int i=0;i<n;++i){
+        for (int i=0; i<n; ++i){
             if (czas1[i]>czas2[i]){
                 j=1;
                 break;
@@ -60,7 +60,7 @@ int main(void){
     if(porownywanieCzasow(3,czas1,czas2)==2){
         goto PODAWANIE_DANYCH;
     }
-    printf("\nWynik porownywania to: %d",porownywanieCzasow(3,czas1,czas2));
+    printf("\nWynik porownywania to: %d",porownywanieCzasow(3, czas1, czas2));
     printf("\n\n");
     return 0;
 }
