@@ -8,7 +8,7 @@
 
 int sprawdzCzyNieujemnaWartosc(double);
 int wybierzPoleLubObwod(void);
-int sprawdzCzyTrojkatOTakichBokachIstnieje(double,double,double);
+int sprawdzCzyTrojkatOTakichBokachIstnieje(double, double, double);
 void obliczeniaDlaKwadratu(void);
 void obliczeniaDlaProstokata(void);
 void obliczeniaDlaTrojkata(void);
@@ -94,7 +94,7 @@ int wybierzPoleLubObwod(void){
     const int wyborDzialania;
     printf("\nWybierz, co chcesz obliczyc:\n\t1: pole\n\t2: obwod\n");
     printf("\nObliczam: ");
-    scanf("%d",&wyborDzialania);
+    scanf("%d", &wyborDzialania);
     if ((wyborDzialania!=1) && (wyborDzialania!=2)){
         printf("Wpisano zla wartosc\n");
         wybierzPoleLubObwod();
