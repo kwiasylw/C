@@ -48,19 +48,32 @@ int porownywanieCzasow(int n, int czas1[n], int czas2[n]){
     }
 }
 
+void wypisywanieWynikuPorownanZObjasnieniem(int wynik){
+    if (wynik==-1){
+        printf("%d, czyli czas pierwszy jest wczesniej.", wynik);
+    }
+    if (wynik==0){
+        printf("%d, czyli czasy sa rowne.", wynik);
+    }
+    if (wynik==1){
+        printf("%d, czyli czas drugi jest wczesniej.", wynik);
+    }
+}
+
 int main(void){
     printf("Program porownuje dwie godziny\n\n");
-    printf("Legenda: \n\t-1: czas pierwszy jest wczesniej \n\t 0: czasy sa rowne \n\t 1:czas drugi jest wczesniej\n\n\n");
-    int czas1[3], czas2[3];
+    printf("Legenda: \n\t-1: czas drugi jest wczesniej \n\t 0: czasy sa rowne \n\t 1: czas drugi jest wczesniej\n\n\n");
+    int czas1[3], czas2[3], wynik;
     PODAWANIE_DANYCH:
     printf("\nPodaj pierwsza godzine w formacie GG-MM-SS: \n");
-    podawanieDanych(3,czas1);
+    podawanieDanych(3, czas1);
     printf("\n\nPodaj druga godzine w formacie GG-MM-SS: \n");
-    podawanieDanych(3,czas2);
-    if(porownywanieCzasow(3,czas1,czas2)==2){
+    podawanieDanych(3, czas2);
+    if(porownywanieCzasow(3, czas1, czas2)==2){
         goto PODAWANIE_DANYCH;
     }
-    printf("\nWynik porownywania to: %d",porownywanieCzasow(3, czas1, czas2));
+    printf("\nWynik porownywania to: ");
+    wypisywanieWynikuPorownanZObjasnieniem(porownywanieCzasow(3, czas1, czas2));
     printf("\n\n");
     return 0;
 }
