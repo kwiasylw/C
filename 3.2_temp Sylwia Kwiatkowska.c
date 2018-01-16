@@ -3,7 +3,7 @@
 void fahrenheityNaCelsjusze(void){
     float tempWFahrenheitach, tempWCelsjuszach;
     printf("Wpisz temperature w stopniach Fahrenheita: ");
-    scanf("%f",&tempWFahrenheitach);
+    scanf("%f", &tempWFahrenheitach);
     tempWCelsjuszach=(tempWFahrenheitach-32)/1.8;
     printf("Temperatura w stopniach Celsjusza wynosi: %.2f\n", tempWCelsjuszach);
 }
@@ -11,7 +11,7 @@ void fahrenheityNaCelsjusze(void){
 void celsjuszeNaFahrenheity(void){
     float tempWCelsjuszach, tempWFahrenheitach;
     printf("Wpisz temperature w stopniach Celsjusza: ");
-    scanf("%f",&tempWCelsjuszach);
+    scanf("%f", &tempWCelsjuszach);
     tempWFahrenheitach=(tempWCelsjuszach*1.8)+32;
     printf("Temperatura w stopniach Fahrenheita wynosi: %.2f\n", tempWFahrenheitach);
 }
