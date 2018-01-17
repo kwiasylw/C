@@ -26,6 +26,8 @@ Vector *reserve(Vector *vect){
     }
     pom->capacity=capacity(vect);
     pom->numOfElem=size(vect);
+    printf("\nAlokacja tablicy liczb calkowitych powiodla sie.\n\n");
+
     return pom;
 }
 
@@ -37,12 +39,12 @@ int capacity(Vector *vect){
     return vect->capacity;
 }
 
-void empty(Vector *vect){
+int empty(Vector *vect){
     if(vect->numOfElem==0){
-        printf("\nTablica jest pusta.\n");
+        return 0;
     }
     else{
-        printf("\nTablica nie jest pusta.\n");
+        return 1;
     }
 }
 
@@ -59,14 +61,16 @@ void push_back(Vector *vect){
     printf("\nPodaj liczbe do dodania na koncu tablicy: ");
     scanf("%d", &(vect->tablica[vect->numOfElem]));
     (vect->numOfElem)++;
+    printf("Liczba zostala dodana na koniec tablicy.\n");
     if(size(vect)==1){
         return;
     }
     vect->capacity+=sizeof(int);
+
 }
 
 void insert(Vector *vect){
-    int miejsce;
+    int i, miejsce;
     printf("W ktore miejsce listy chcesz wstawic liczbe: ");
     scanf("%d",&miejsce);
     if(vect->tablica==NULL){
@@ -82,12 +86,13 @@ void insert(Vector *vect){
         scanf("%d",&(vect->tablica[0]));
     }
     vect->tablica=(int*)realloc(vect->tablica,(vect->numOfElem+1)*sizeof(int));
-    for(int i=size(vect); i>miejsce-1; i--){
+    for(i=size(vect); i>miejsce-1; i--){
         vect->tablica[i]=vect->tablica[i-1];
     }
     printf("\nPodaj liczbe do dodania: ");
     scanf("%d",&(vect->tablica[i]));
     (vect->numOfElem)++;
+    printf("Liczba zostala dodana w wybrane miejsce.\n");
     vect->capacity+=sizeof(int);
 }
 
