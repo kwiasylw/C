@@ -3,6 +3,7 @@
 #include "vector.h"
 
 void menu(Vector *vect){
+    puts("\n* * * Nacisnij enter, aby przejsc dalej * * *");
     fflush(stdin);
     getc(stdin);
     int wybor;
@@ -29,10 +30,10 @@ void menu(Vector *vect){
             break;
         case 3:
             if(empty(vect)){
-                printf("\nTablica nie jest pusta.\n");
+                printf("\nTablica nie jest pusta.\n\n");
             }
             else{
-                printf("\nTablica jest pusta.\n");
+                printf("\nTablica jest pusta.\n\n");
             }
             return menu(vect);
             break;
@@ -60,7 +61,7 @@ void menu(Vector *vect){
             return;
             break;
         default:
-            printf("Podano zla wartosc.\n");
+            printf("Podano zla wartosc.\n\n");
             return menu(vect);
             break;
     }
