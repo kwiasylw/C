@@ -3,6 +3,8 @@
 #include "vector.h"
 
 void menu(Vector *vect){
+    fflush(stdin);
+    getc(stdin);
     int wybor;
     printf("\n\tCo chcesz zrobic:\n");
     printf("1. Sprawdzic ilosc elementow.\n");
@@ -26,7 +28,12 @@ void menu(Vector *vect){
             return menu(vect);
             break;
         case 3:
-            empty(vect);
+            if(empty(vect)){
+                printf("\nTablica nie jest pusta.\n");
+            }
+            else{
+                printf("\nTablica jest pusta.\n");
+            }
             return menu(vect);
             break;
         case 4:
