@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-void funkcja1 (const char *tekst, va_list argumenty){
+void wypisywanieIProsbaOPodanieZnaku(const char *tekst, va_list argumenty){
     printf("%s", tekst);
     char *wartosc;
     while (wartosc=va_arg(argumenty, char*)){
@@ -12,14 +12,14 @@ void funkcja1 (const char *tekst, va_list argumenty){
     }
 }
 
-void funkcja2 (const char *tekst, ...) {
+void przyjmowanieNieokreslonejLiczbyArgumentow(const char *tekst, ...){
     va_list argumenty;
     va_start(argumenty, tekst);
-    funkcja1 (tekst, argumenty);
-    va_end (argumenty);
+    wypisywanieIProsbaOPodanieZnaku(tekst, argumenty);
+    va_end(argumenty);
 }
 
-int main (void) {
-    funkcja2("Podaj ","dluzszy ","bok ","prostokata: ","%d","A"," teraz"," krotszy: ","%d", NULL);
+int main(void){
+    przyjmowanieNieokreslonejLiczbyArgumentow("Podaj ", "dluzszy ", "bok ", "prostokata: ", "%d", "A", " teraz", " krotszy: ", "%d", NULL);
     return 0;
 }
