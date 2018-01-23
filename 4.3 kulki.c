@@ -78,7 +78,7 @@ void drugieSzacowanieWag(int liczba1, int liczba2, int liczba11, int liczba22, i
 int main(void){
     srand(time(NULL));
     int losowa, liczba1, liczba2, liczba11, liczba22, wagaLewa=0, wagaPrawa=0;
-    int wagi[9]={1,1,1,1,1,1,1,1,1};
+    int wagi[9]={1, 1, 1, 1, 1, 1, 1, 1, 1};
     losowa=1+rand()%ILOSCKULEK;
     wagi[losowa]=2;
     printf("Zagadka:\n");
