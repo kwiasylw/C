@@ -26,8 +26,7 @@ int sprawdzPoprawnoscDanych(int godzina, int minuta, int sekunda){
 
 int porownywanieCzasow(int n, int czas1[n], int czas2[n]){
     int j;
-    if((sprawdzPoprawnoscDanych(czas1[INDEKS_GODZINY],czas1[INDEKS_MINUTY],czas1[INDEKS_SEKUNDY]))
-        || (sprawdzPoprawnoscDanych(czas2[INDEKS_GODZINY],czas2[INDEKS_MINUTY],czas2[INDEKS_SEKUNDY]))){
+    if((sprawdzPoprawnoscDanych(czas1[INDEKS_GODZINY], czas1[INDEKS_MINUTY], czas1[INDEKS_SEKUNDY])) || (sprawdzPoprawnoscDanych(czas2[INDEKS_GODZINY], czas2[INDEKS_MINUTY], czas2[INDEKS_SEKUNDY]))){
         return 2;
     }
     else{
