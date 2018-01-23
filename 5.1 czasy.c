@@ -15,7 +15,7 @@ void podawanieDanych(int n, int czas[n]){
 }
 
 int sprawdzPoprawnoscDanych(int godzina, int minuta, int sekunda){
-    if ((godzina>=0) && (godzina<=23) && (minuta>=0) && (minuta<=59) && (sekunda>=0) && (sekunda<=59)){
+    if((godzina>=0) && (godzina<=23) && (minuta>=0) && (minuta<=59) && (sekunda>=0) && (sekunda<=59)){
         return 0;
     }
     else{
@@ -26,17 +26,17 @@ int sprawdzPoprawnoscDanych(int godzina, int minuta, int sekunda){
 
 int porownywanieCzasow(int n, int czas1[n], int czas2[n]){
     int j;
-    if ( (sprawdzPoprawnoscDanych(czas1[INDEKS_GODZINY],czas1[INDEKS_MINUTY],czas1[INDEKS_SEKUNDY]))
-        || (sprawdzPoprawnoscDanych(czas2[INDEKS_GODZINY],czas2[INDEKS_MINUTY],czas2[INDEKS_SEKUNDY])) ){
+    if((sprawdzPoprawnoscDanych(czas1[INDEKS_GODZINY],czas1[INDEKS_MINUTY],czas1[INDEKS_SEKUNDY]))
+        || (sprawdzPoprawnoscDanych(czas2[INDEKS_GODZINY],czas2[INDEKS_MINUTY],czas2[INDEKS_SEKUNDY]))){
         return 2;
     }
     else{
-        for (int i=0; i<n; ++i){
-            if (czas1[i]>czas2[i]){
+        for(int i=0; i<n; ++i){
+            if(czas1[i]>czas2[i]){
                 j=1;
                 break;
             }
-            if (czas1[i]<czas2[i]){
+            if(czas1[i]<czas2[i]){
                 j=-1;
                 break;
             }
@@ -49,13 +49,13 @@ int porownywanieCzasow(int n, int czas1[n], int czas2[n]){
 }
 
 void wypisywanieWynikuPorownanZObjasnieniem(int wynik){
-    if (wynik==-1){
+    if(wynik==-1){
         printf("%d, czyli czas pierwszy jest wczesniej.", wynik);
     }
-    if (wynik==0){
+    if(wynik==0){
         printf("%d, czyli czasy sa rowne.", wynik);
     }
-    if (wynik==1){
+    if(wynik==1){
         printf("%d, czyli czas drugi jest wczesniej.", wynik);
     }
 }
