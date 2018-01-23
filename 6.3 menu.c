@@ -2,31 +2,30 @@
 #include <stdlib.h>
 #include <time.h>
 
-void losowanie(int a[], int n){
+void losowanie(int n, int a[]){
     srand(time(NULL));
     for(int i=0; i<n; i++){
         a[i]=rand()%40;
     }
-    puts("Elementy tablicy zostaly wylosowane.");
 }
 
-void wypisywanie(int a[10]){
-    losowanie(a, 10);
+void wypisywanie(int n, int a[]){
+    losowanie(n, a);
     puts("\nTablica:");
-    for(int i=0; i<10; i++){
+    for(int i=0; i<n; i++){
         printf("%d ", a[i]);
     }
 }
 
-void srednia(int a[10]){
+void srednia(int n, int a[]){
     float wynik=0;
-    for(int i=0; i<10; i++){
+    for(int i=0; i<n; i++){
         wynik+=a[i];
     }
     printf("\nSrednia elementow tablicy: %.2f\n", wynik/10);
 }
 
-void sortowanie(int a[], int n){
+void sortowanie(int n, int a[]){
     int temp;
     for(int i=0; i<n; i++){
         for(int j=0; j<n-1-i; j++){
@@ -39,23 +38,23 @@ void sortowanie(int a[], int n){
     }
 }
 
-void mediana(int a[10]){
+void mediana(int n, int a[]){
     float mediana;
-    losowanie(a, 10);
-    sortowanie(a, 10);
+    losowanie(n, a);
+    sortowanie(n, a);
     mediana=(a[4]+a[5])/2;
     printf("\nMediana elementow tablicy: %.2f", mediana);
 
 }
 
-void minMax(int a[10]){
+void minMax(int n, int a[]){
     int min=a[0], max=a[0];
-    for(int i=0; i<10; i++){
+    for(int i=0; i<n; i++){
         if(a[i]>max){
             max=a[i];
         }
     }
-    for(int i=0; i<10; i++){
+    for(int i=0; i<n; i++){
         if(a[i]<min){
             min=a[i];
         }
@@ -76,22 +75,23 @@ int main(void){
         scanf("%d", &wybor);
         switch(wybor){
             case 1:
-                losowanie(a, 10);
+                losowanie(10, a);
+                puts("Elementy tablicy zostaly wylosowane.");
                 break;
             case 2:
-                wypisywanie(a);
+                wypisywanie(10, a);
                 break;
             case 3:
-                wypisywanie(a);
-                srednia(a);
+                wypisywanie(10, a);
+                srednia(10, a);
                 break;
             case 4:
-                wypisywanie(a);
-                mediana(a);
+                wypisywanie(10, a);
+                mediana(10, a);
                 break;
             case 5:
-                wypisywanie(a);
-                minMax(a);
+                wypisywanie(10, a);
+                minMax(10, a);
                 break;
             case 6:
                 exit(0);
