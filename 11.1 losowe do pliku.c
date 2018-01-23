@@ -31,7 +31,8 @@ void generowanieDoPliku(int n){
     }
     else{
         printf("ERROR\nWprowadzona bledna nazwe\n");
-        exit(1);
+        generowanieDoPliku(n);
+
     }
 }
 
