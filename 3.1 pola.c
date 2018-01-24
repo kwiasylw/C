@@ -21,11 +21,11 @@ void obliczeniaDlaKwadratu(void){
     scanf("%lf", &aKwadrat);
     sprawdzCzyNieujemnaWartosc(aKwadrat);
     int wyborDzialania=wybierzPoleLubObwod();
-    if (wyborDzialania==1){
+    if(wyborDzialania==1){
         double poleKwadratu=aKwadrat*aKwadrat;
         printf("\nPole kwadratu wynosi %.2lf\n\n", poleKwadratu);
     }
-    if (wyborDzialania==2){
+    if(wyborDzialania==2){
         double obwodKwadratu=4*aKwadrat;
         printf("\nObwod kwadratu wynosi %.2lf\n\n", obwodKwadratu);
     }
@@ -38,11 +38,11 @@ void obliczeniaDlaProstokata(void){
     sprawdzCzyNieujemnaWartosc(aProstokat);
     sprawdzCzyNieujemnaWartosc(bProstokat);
     int wyborDzialania=wybierzPoleLubObwod();
-    if (wyborDzialania==1){
+    if(wyborDzialania==1){
         double poleProstokata=aProstokat*bProstokat;
         printf("\nPole prostokata wynosi %.2lf\n\n", poleProstokata);
     }
-    if (wyborDzialania==2){
+    if(wyborDzialania==2){
         double obwodProstokata=2*(aProstokat+bProstokat);
         printf("\nObwod prostokata = %.2lf\n\n", obwodProstokata);
     }
@@ -64,11 +64,11 @@ void obliczeniaDlaTrojkata(void){
         obliczeniaDlaTrojkata();
     }
     int wyborDzialania=wybierzPoleLubObwod();
-    if (wyborDzialania==1){
+    if(wyborDzialania==1){
         double poleTrojkata=aTrojkat*wysokoscTrojkata/2;
         printf("\nPole trojkata wynosi %.2lf\n\n", poleTrojkata);
     }
-    if (wyborDzialania==2){
+    if(wyborDzialania==2){
         double obwoTrojkata=aTrojkat+bTrojkat+cTrojkat;
         printf("\nObwod trojkata wynosi %.2lf\n\n", obwoTrojkata);
     }
@@ -80,11 +80,11 @@ void obliczeniaDlaKola(void){
     scanf("%lf", &r);
     sprawdzCzyNieujemnaWartosc(r);
     int wyborDzialania=wybierzPoleLubObwod();
-    if (wyborDzialania==1){
+    if(wyborDzialania==1){
         double poleKola=M_PI*r*r;
         printf("\nPole kola wynosi %.2lf\n\n", poleKola);
     }
-    if (wyborDzialania==2){
+    if(wyborDzialania==2){
         double obwodKola=2*M_PI*r;
         printf("\nObwod kola wynosi %.2lf\n\n", obwodKola);
     }
@@ -95,7 +95,7 @@ int wybierzPoleLubObwod(void){
     printf("\nWybierz, co chcesz obliczyc:\n\t1: pole\n\t2: obwod\n");
     printf("\nObliczam: ");
     scanf("%d", &wyborDzialania);
-    if ((wyborDzialania!=1) && (wyborDzialania!=2)){
+    if((wyborDzialania!=1) && (wyborDzialania!=2)){
         printf("Wpisano zla wartosc\n");
         wybierzPoleLubObwod();
     }
@@ -103,7 +103,7 @@ int wybierzPoleLubObwod(void){
 }
 
 int sprawdzCzyNieujemnaWartosc(double a){
-    if (a<=0){
+    if(a<=0){
         return 1;
     }
     else{
@@ -112,7 +112,7 @@ int sprawdzCzyNieujemnaWartosc(double a){
 }
 
 int sprawdzCzyTrojkatOTakichBokachIstnieje(double a, double b, double c){
-    if ((a+b>c) && (b+c>a) && (a+c>b)){
+    if((a+b>c) && (b+c>a) && (a+c>b)){
         return 0;
     }
     else{
