@@ -32,7 +32,7 @@ int main(void){
                "\n\nWybor: ");
         scanf("%d", &opcja);
         switch(opcja){
-            case
+            case 1:
                 stopnieNaradiany();
                 break;
             case 2:
