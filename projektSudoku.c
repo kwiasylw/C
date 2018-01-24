@@ -2,7 +2,6 @@
 #include <ctype.h> //niestandardowa biblioteka
 #include "projektSudoku.h"
 
-
 int ogolnyLicznikNieustawionych=0;
 
 struct czesciSkladowePlanszy pobierzCzesci(int indeks){
