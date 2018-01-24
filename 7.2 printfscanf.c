@@ -4,7 +4,7 @@
 void wypisywanieIProsbaOPodanieZnaku(const char *tekst, va_list argumenty){
     printf("%s", tekst);
     char *wartosc;
-    while (wartosc=va_arg(argumenty, char*)){
+    while(wartosc=va_arg(argumenty, char*)){
         if (wartosc=="%d"){
             scanf("%s", &wartosc);
         }
