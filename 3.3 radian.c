@@ -5,7 +5,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-float stopnieNaradianyiany(void){
+float stopnieNaradiany(void){
     float stopnie, radiany;
     printf("\nWpisz kat w stopniach: ");
     scanf("%f", &stopnie);
@@ -15,7 +15,7 @@ float stopnieNaradianyiany(void){
 
 float radianyNaStopnie(void){
     float radiany, stopnie;
-    printf("\nWpisz kat w radianyianach: ");
+    printf("\nWpisz kat w radianach: ");
     scanf("%f", &radiany);
     stopnie=radiany*180/M_PI;
     printf("Wartosc w stopniach wynosi: %.3f\n\n", stopnie);
@@ -24,29 +24,26 @@ float radianyNaStopnie(void){
 int main(void){
     int wyjscie=0, opcja=0;
     printf("Konwerter stopnie <-> radiany\n\n");
-    while (wyjscie==0){
+    while(wyjscie==0){
         printf("Wybierz jedna z ponizszych opcji: "
                "\n\t1: Zamiana stopni na radiany"
                "\n\t2: Zamiana radianyianow na stopnie"
                "\n\t3: Wyjscie"
                "\n\nWybor: ");
         scanf("%d", &opcja);
-        switch (opcja){
-        case 1:
-            stopnieNaradianyiany();
-            break;
-
-        case 2:
-            radianyNaStopnie();
-            break;
-
-        case 3:
-            wyjscie=1;
-            break;
-
-        default:
-            puts("\nWybrano zla opcje. ");
-            break;
+        switch(opcja){
+            case
+                stopnieNaradiany();
+                break;
+            case 2:
+                radianyNaStopnie();
+                break;
+            case 3:
+                wyjscie=1;
+                break;
+            default:
+                puts("\nWybrano zla opcje.\n");
+                break;
         }
     }
     return 0;
