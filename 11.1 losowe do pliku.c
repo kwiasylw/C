@@ -6,7 +6,7 @@ int wybieranieIlosciLiczbDoWygenerowania(void){
     int x;
     printf("Podaj ilosc liczb do wygenerowania: ");
     scanf("%d", &x);
-    if (x<1){
+    if(x<1){
         printf("ERROR\nWprowadzona bledna wartosc\n\n\n");
         wybieranieIlosciLiczbDoWygenerowania();
     }
