@@ -1,10 +1,17 @@
 #include <stdio.h>
 #include <ctype.h> //niestandardowa biblioteka
-
 #include "projektSudoku.h"
 
 
 int ogolnyLicznikNieustawionych=0;
+
+struct czesciSkladowePlanszy pobierzCzesci(int indeks){
+	struct czesciSkladowePlanszy zwroc;
+	zwroc.wiersz=(int)(indeks/LINIE); //zwraca nr wiersza
+	zwroc.kolumna=indeks%LINIE; //zwraca nr kolumny
+	zwroc.malyKwadratSudoku=LINIEWCZESCI*(int)(zwroc.wiersz/LINIEWCZESCI)+(int)(zwroc.kolumna/LINIEWCZESCI); //zwraca nr kwadratu
+	return zwroc;
+}
 
 void pokazPlanszeSudoku(int* rozwiazanie){
 	printf(" -----------------------------------\n");
@@ -36,13 +43,6 @@ void pokazPlanszeSudoku(int* rozwiazanie){
 	printf(" -----------------------------------");
 }
 
-struct czesciSkladowePlanszy pobierzCzesci(int indeks){
-	struct czesciSkladowePlanszy zwroc;
-	zwroc.wiersz=(int)(indeks/LINIE); //zwraca nr wiersza
-	zwroc.kolumna=indeks%LINIE; //zwraca nr kolumny
-	zwroc.malyKwadratSudoku=LINIEWCZESCI*(int)(zwroc.wiersz/LINIEWCZESCI)+(int)(zwroc.kolumna/LINIEWCZESCI); //zwraca nr kwadratu
-	return zwroc;
-}
 
 int czyDanaWartoscJestJuzWTablicy(int* tablica, int wartosc, int dlugosc){
 	for(int i=0; i<dlugosc; i++){
