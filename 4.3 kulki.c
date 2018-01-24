@@ -5,10 +5,10 @@
 #define ILOSCKULEK 9
 
 void ktoraSzalkaWyzej(int wagaLewa, int wagaPrawa){
-    if (wagaLewa==wagaPrawa){
+    if(wagaLewa==wagaPrawa){
         printf("Szalki sa na rownym poziomie\n\n");
     }
-    else if (wagaLewa<wagaPrawa){
+    else if(wagaLewa<wagaPrawa){
         printf("Pierwsza szalka jest wyzej\n\n");
     }
     else{
@@ -17,10 +17,10 @@ void ktoraSzalkaWyzej(int wagaLewa, int wagaPrawa){
 }
 
 int sumowanieWagNaSzalkach(int k, int m, int n, int wagaLewa, int wagaPrawa, int wagi[]){
-    for (int i=k; i<m; i++){
+    for(int i=k; i<m; i++){
         wagaLewa+=wagi[i];
     }
-    for (int i=m; i<m+n; i++){
+    for(int i=m; i<m+n; i++){
         wagaPrawa+=wagi[i];
     }
 }
@@ -33,7 +33,7 @@ int pobieranieIlosciKulekNaSzalceOdUzytkownika(int n){
 }
 
 int sprawdzenieCzyNiePodanoZaDuzoKulek(int liczba1, int liczba2, int liczba3, int liczba4){
-    if (liczba1+liczba2+liczba3+liczba4<=ILOSCKULEK){
+    if(liczba1+liczba2+liczba3+liczba4<=ILOSCKULEK){
         return 0;
     }
     else{
@@ -61,15 +61,15 @@ void drugieSzacowanieWag(int liczba1, int liczba2, int liczba11, int liczba22, i
         liczba22=pobieranieIlosciKulekNaSzalceOdUzytkownika(2);
     } while(sprawdzenieCzyNiePodanoZaDuzoKulek(liczba1, liczba11, liczba2, liczba22));
 
-    if (wybor==1){
+    if(wybor==1){
         sumowanieWagNaSzalkach(liczba1+liczba2, liczba1+liczba2+liczba11, liczba22, wagaLewa, wagaPrawa, wagi);
         ktoraSzalkaWyzej(wagaLewa, wagaPrawa);
     }
-    else if (wybor==2){
+    else if(wybor==2){
         sumowanieWagNaSzalkach(0, liczba11, liczba22, wagaLewa, wagaPrawa, wagi);
         ktoraSzalkaWyzej(wagaLewa, wagaPrawa);
     }
-    else if (wybor==3){
+    else if(wybor==3){
         sumowanieWagNaSzalkach(liczba1, liczba1+liczba11, liczba22, wagaLewa, wagaPrawa, wagi);
         ktoraSzalkaWyzej(wagaLewa, wagaPrawa);
     }
