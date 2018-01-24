@@ -7,13 +7,13 @@
 
 void losowanieWartosci(int tab[]){
     srand(time(NULL));
-    for (int i=0; i<ILOSCELEMENTOW; i++){
+    for(int i=0; i<ILOSCELEMENTOW; i++){
         tab[i]=rand()%30;
     }
 }
 
 void przypisywanieWskaznikomOdpowiednichWartosciZTablicy(int tab[], int *wsk[]){
-    for (int j=0; j<ILOSCELEMENTOW; j++){
+    for(int j=0; j<ILOSCELEMENTOW; j++){
         wsk[j]=&tab[j];
     }
 }
@@ -21,16 +21,16 @@ void przypisywanieWskaznikomOdpowiednichWartosciZTablicy(int tab[], int *wsk[]){
 void wypisywanieNaEkranZawartosciTablic(int tab[], int **wsk){
     puts("L.P.\ttab A\ttab B");
     puts("---------------------");
-    for (int j=0; j<ILOSCELEMENTOW; j++){
+    for(int j=0; j<ILOSCELEMENTOW; j++){
         printf("%d\t%d\t%d\n", j, tab[j], *wsk[j]);
     }
 }
 
 void sortowanieBabelkowe(int **wsk){
     int *tmp;
-    for (int k=0; k<ILOSCELEMENTOW; k++){
-        for (int j=0; j<ILOSCELEMENTOW-1; j++){
-            if (*wsk[j]>*wsk[j+1]){
+    for(int k=0; k<ILOSCELEMENTOW; k++){
+        for(int j=0; j<ILOSCELEMENTOW-1; j++){
+            if(*wsk[j]>*wsk[j+1]){
                 tmp=wsk[j+1];
                 wsk[j+1]=wsk[j];
                 wsk[j]=tmp;
