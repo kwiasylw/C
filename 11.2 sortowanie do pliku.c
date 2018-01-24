@@ -37,7 +37,7 @@ void generowanieDoPliku(int n, int tab[]){
     printf("Podaj nazwe pliku docelowego: ");
     scanf("%s", filename);
     out=fopen(filename, "w");
-    if (out){
+    if(out){
         fprintf(out,"Posortowane liczby:\n");
         for(int i=0; i<n; ++i){
             fprintf(out, "%d ", tab[i]);
@@ -53,7 +53,7 @@ void generowanieDoPliku(int n, int tab[]){
 
 void sortowanie(int n, int tab[]){
     int temp;
-    for (int i=0; i<n; ++i) {
+    for(int i=0; i<n; ++i) {
         for(int j=0; j<(n-1); ++j){
             if(tab[j]>tab[j+1]){
                 temp=tab[j];
