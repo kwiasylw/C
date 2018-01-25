@@ -11,10 +11,10 @@ int niewiadoma[MAXILOSC];
 int rozwiazane[MAXILOSC];
 int nierozwiazane[MAXILOSC];
 
-struct czesciSkladowePlanszy{
-	int wiersz;
-	int kolumna;
-	int malyKwadratSudoku; //kwadrat 3x3, cala plansza to 9 takich kwadratow
+struct czesciSkladowePlanszy {
+    int wiersz;
+    int kolumna;
+    int malyKwadratSudoku; //kwadrat 3x3, cala plansza to 9 takich kwadratow
 };
 
 void pokazPlanszeSudoku(int*);
