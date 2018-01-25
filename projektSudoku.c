@@ -2,14 +2,14 @@
 #include <ctype.h> //niestandardowa biblioteka
 #include "projektSudoku.h"
 
+
 int ogolnyLicznikNieustawionych=0;
 
 struct czesciSkladowePlanszy pobierzCzesci(int indeks){
 	struct czesciSkladowePlanszy zwroc;
 	zwroc.wiersz=(int)(indeks/LINIE); //zwraca nr wiersza
 	zwroc.kolumna=indeks%LINIE; //zwraca nr kolumny
-	zwroc.malyKwadratSudoku=LINIEWCZESCI*(int)(zwroc.wiersz/LINIEWCZESCI)
-                            +(int)(zwroc.kolumna/LINIEWCZESCI);
+	zwroc.malyKwadratSudoku=LINIEWCZESCI*(int)(zwroc.wiersz/LINIEWCZESCI)+(int)(zwroc.kolumna/LINIEWCZESCI); //zwraca nr kwadratu
 	return zwroc;
 }
 
@@ -70,8 +70,7 @@ void wezPionowe(int kolumna, int* zwroc){
 void wezKwadrat(int kolejne, int* zwroc){
 	for(int i=0; i<LINIEWCZESCI; i++){
 		for(int j=0; j<LINIEWCZESCI; j++){
-			zwroc[LINIEWCZESCI*i+j]=niewiadoma[LINIE*i+kolejne*LINIEWCZESCI+j
-                                    +((int)(kolejne/LINIEWCZESCI)*(LINIEWCZESCI-1)*LINIE)];
+			zwroc[LINIEWCZESCI*i+j]=niewiadoma[LINIE*i+kolejne*LINIEWCZESCI+j+((int)(kolejne/LINIEWCZESCI)*(LINIEWCZESCI-1)*LINIE)];
 		}
 	}
 }
