@@ -10,9 +10,8 @@ int main(void){
     int i=0, j=0, zmiennaPomocnicza, tablicaPrzedLinearyzacja[LINIE][LINIE];
     int losowa=rand()%4;
     int tablicaWierszyCalosci[]={0, 1, 2}, tablicaKolumnCalosci[]={0, 1, 2};
-    int wierszeCzesci, kolumnyCzesci, wierszeCalosci, kolumnyCalosci;
-    int indeksWierszyCalosci, indeksKolumnCalosci, wartoscStartowa;
-
+    int wierszeCzesci, kolumnyCzesci, wierszeCalosci, kolumnyCalosci, indeksWierszyCalosci, indeksKolumnCalosci, wartoscStartowa;
+    
     poczatkowoUstawWartosciNaZero();
     losujDlaCiekawszegoUstawieniaWartosci(losowa, tablicaWierszyCalosci, tablicaKolumnCalosci);
     for(indeksWierszyCalosci=0; indeksWierszyCalosci<LINIEWCZESCI; indeksWierszyCalosci++){
@@ -46,8 +45,8 @@ int main(void){
         }
     }
     ustawWartosci(0, 0);
-    memcpy(rozwiazane, niewiadoma,(MAXILOSC*sizeof(int)));
-    memcpy(nierozwiazane, niewiadoma,(MAXILOSC*sizeof(int)));
+    memcpy(rozwiazane, niewiadoma, (MAXILOSC*sizeof(int)));
+    memcpy(nierozwiazane, niewiadoma, (MAXILOSC*sizeof(int)));
     wezZPowrotem(1);
     wypiszNaEkranIPytajOZapisDoPliku();
     return 0;
