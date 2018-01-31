@@ -18,7 +18,7 @@ int main(void){
     srand(time(NULL));
     int randomowa=rand()%10+1;
     int poprawne=0, liczbaProbGracza=0, liczbaWybranaPrzezGracza;
-    printf("Zgadnij liczbe wylosowana przez komputer! (Zakres od 1 do 10) ");
+    printf("Zgadnij liczbe wylosowana przez komputer! (Zakres od %d do %d) ", zakresOd, zakresDo);
     printf("\nWpisz liczbe: ");
     do{
         scanf("%d", &liczbaWybranaPrzezGracza);
