@@ -1,10 +1,31 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 
-int wyborMiesiacaIPrzypisanieOdpowiedniejIlosciDni(int dni){
-    int miesiac;
-    printf("Podaj numer miesiaca (1-12): ");
-    scanf("%d", &miesiac);
+int pobieranieWybranejCzesciAktualnejDaty(char* symbolDlaWybranejCzesciDaty){
+    time_t czas;
+    struct tm* data;
+    char wybranaCzescAktualnejDaty[20];
+    time(&czas);
+    data=localtime(&czas);
+    strftime(wybranaCzescAktualnejDaty, 20, symbolDlaWybranejCzesciDaty, data);
+    int wybranaCzescAktualnejDatyJakoInt=atoi(wybranaCzescAktualnejDaty);
+    return wybranaCzescAktualnejDatyJakoInt;
+}
+
+int uzyskanieDniaTygodniaPierwszegoDniaMiesiaca(int aktualnyDzienMiesiaca, int aktualnyDzienTygodnia){
+    for(int i=aktualnyDzienMiesiaca-1; i>=1; i--){
+        aktualnyDzienTygodnia--;
+        if(aktualnyDzienTygodnia==0){
+            aktualnyDzienTygodnia+=7;
+        }
+    }
+    int dzienPierwszegoDniaMiesiaca=aktualnyDzienTygodnia;
+    return dzienPierwszegoDniaMiesiaca;
+}
+
+int przypisanieOdpowiedniejIlosciDniDlaDanegoMiesiaca(int dni, int miesiac){
     if(miesiac==1 || miesiac==3 || miesiac==5 || miesiac==7 || miesiac==8 || miesiac==10 || miesiac==12){
         dni=31;
     }
@@ -34,7 +55,6 @@ int wyborMiesiacaIPrzypisanieOdpowiedniejIlosciDni(int dni){
     return dni;
 }
 
-
 void wypisywanieKalendarzaLamiacCo7Dni(int start, int dni){
     puts("\nPON\tWT\tSR\tCZW\tPT\tSOB\tNDZ\n");
     for(int i=1; i<=dni+start-1; i++){
@@ -51,19 +71,12 @@ void wypisywanieKalendarzaLamiacCo7Dni(int start, int dni){
 }
 
 int main(void){
-    int dni, start;
-    printf("***Program wyswietla dany miesiac***\n");
-    dni=wyborMiesiacaIPrzypisanieOdpowiedniejIlosciDni(dni);
-    puts("\nKtorego dnia rozpoczyna sie miesiac?");
-    puts("\t*Poniedzialek \t- wybierz 1");
-    puts("\t*Wtorek \t- wybierz 2");
-    puts("\t*Sroda\t\t- wybierz 3");
-    puts("\t*Czwartek\t- wybierz 4");
-    puts("\t*Piatek\t\t- wybierz 5");
-    puts("\t*Sobota\t\t- wybierz 6");
-    puts("\t*Niedziela\t- wybierz 7");
-    printf("\nWpisz liczbe (1-7): ");
-    scanf("%d", &start);
+    int aktualnyDzienMiesiaca=pobieranieWybranejCzesciAktualnejDaty("%d");
+    int aktualnyDzienTygodnia=pobieranieWybranejCzesciAktualnejDaty("%w");
+    int aktualnyMiesiac=pobieranieWybranejCzesciAktualnejDaty("%m");
+    int start=uzyskanieDniaTygodniaPierwszegoDniaMiesiaca(aktualnyDzienMiesiaca, aktualnyDzienTygodnia);
+    int dni=przypisanieOdpowiedniejIlosciDniDlaDanegoMiesiaca(dni, aktualnyMiesiac);
+    printf("\t***Program wyswietla aktualny miesiac***\n");
     wypisywanieKalendarzaLamiacCo7Dni(start, dni);
     return 0;
 }
