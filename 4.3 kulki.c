@@ -47,6 +47,7 @@ void pierwszeSzacowanieWag(int liczba1, int liczba2, int wagaLewa, int wagaPrawa
         liczba1=pobieranieIlosciKulekNaSzalceOdUzytkownika(1);
         liczba2=pobieranieIlosciKulekNaSzalceOdUzytkownika(2);
     }
+    
     sumowanieWagNaSzalkach(0, liczba1, liczba2, wagaLewa, wagaPrawa, wagi);
     ktoraSzalkaWyzej(wagaLewa, wagaPrawa);
 }
@@ -56,6 +57,7 @@ void drugieSzacowanieWag(int liczba1, int liczba2, int liczba11, int liczba22, i
     wagaLewa=0, wagaPrawa=0;
     printf("Z ktorej grupy zwazyc kulki? \n \t1: wczesniej niewazone \n\t2: z lewej szalki\n\t3: z prawej szalki \n");
     scanf("%d", &wybor);
+    
     do{
         liczba11=pobieranieIlosciKulekNaSzalceOdUzytkownika(1);
         liczba22=pobieranieIlosciKulekNaSzalceOdUzytkownika(2);
