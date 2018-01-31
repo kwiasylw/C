@@ -2,33 +2,36 @@
 #include <stdlib.h>
 #include <time.h>
 
-void losowanie(int n, int a[]){
+#define ILOSC 10
+
+
+void losowanie(int a[]){
     srand(time(NULL));
-    for(int i=0; i<n; i++){
+    for(int i=0; i<ILOSC; i++){
         a[i]=rand()%40;
     }
 }
 
-void wypisywanie(int n, int a[]){
-    losowanie(n, a);
+void wypisywanie(int a[]){
+    losowanie(a);
     puts("\nTablica:");
-    for(int i=0; i<n; i++){
+    for(int i=0; i<ILOSC; i++){
         printf("%d ", a[i]);
     }
 }
 
-void srednia(int n, int a[]){
+void srednia(int a[]){
     float wynik=0;
-    for(int i=0; i<n; i++){
+    for(int i=0; i<ILOSC; i++){
         wynik+=a[i];
     }
     printf("\nSrednia elementow tablicy: %.2f\n", wynik/10);
 }
 
-void sortowanie(int n, int a[]){
+void sortowanie(int a[]){
     int temp;
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n-1-i; j++){
+    for(int i=0; i<ILOSC; i++){
+        for(int j=0; j<ILOSC-1-i; j++){
             if (a[j]>a[j+1]){
                 temp=a[j];
                 a[j]=a[j+1];
@@ -38,23 +41,22 @@ void sortowanie(int n, int a[]){
     }
 }
 
-void mediana(int n, int a[]){
+void mediana(int a[]){
     float mediana;
-    losowanie(n, a);
-    sortowanie(n, a);
+    losowanie(a);
+    sortowanie(a);
     mediana=(a[4]+a[5])/2;
     printf("\nMediana elementow tablicy: %.2f", mediana);
-
 }
 
-void minMax(int n, int a[]){
+void minMax(int a[]){
     int min=a[0], max=a[0];
-    for(int i=0; i<n; i++){
+    for(int i=0; i<ILOSC; i++){
         if(a[i]>max){
             max=a[i];
         }
     }
-    for(int i=0; i<n; i++){
+    for(int i=0; i<ILOSC; i++){
         if(a[i]<min){
             min=a[i];
         }
@@ -64,34 +66,34 @@ void minMax(int n, int a[]){
 
 
 int main(void){
-    int a[10];
-    int wybor;
+    int a[10], wybor;
     puts("\t***MENU***\n");
     printf("1.Losowanie tablicy 10 liczb\n2.Wyswietlanie jej \
            \n3.Liczenie sredniej liczb\n4.Liczenie mediany liczb \
            \n5.Maksymalny/minimalny element tablicy \n6.Wyjscie");
+
     while(1){
         printf("\n\nWpisz liczbe od 1 do 6: ");
         scanf("%d", &wybor);
         switch(wybor){
             case 1:
-                losowanie(10, a);
+                losowanie(a);
                 puts("Elementy tablicy zostaly wylosowane.");
                 break;
             case 2:
-                wypisywanie(10, a);
+                wypisywanie(a);
                 break;
             case 3:
-                wypisywanie(10, a);
-                srednia(10, a);
+                wypisywanie(a);
+                srednia(a);
                 break;
             case 4:
-                wypisywanie(10, a);
-                mediana(10, a);
+                wypisywanie(a);
+                mediana(a);
                 break;
             case 5:
-                wypisywanie(10, a);
-                minMax(10, a);
+                wypisywanie(a);
+                minMax(a);
                 break;
             case 6:
                 exit(0);
