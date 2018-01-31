@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#define ILOSC 10
 
 
-void losowanieWartosci(int n, int tab[n]){
+void losowanieWartosci(int tab[ILOSC]){
     srand(time(NULL));
-    for(int i=0; i<n; i++){
+    for(int i=0; i<ILOSC; i++){
         tab[i]=rand()%30;
     }
 }
 
 void wyswietlZakres(int *od, int *doo){
+    printf("Tablica: ");
     for(; od<doo; ++od){
         printf("%d ", *od);
     }
@@ -25,15 +27,14 @@ void srednia(int *od, int *doo){ //waga kazdego elementu to jego indeks w tablic
         ++waga;
     }
     wynik=licznik/mianownik;
-    printf("\nSrednia wazona elementow tablicy wynosi: %.2lf\n\n", wynik);
+    printf("\nSrednia wazona elementow tablicy wynosi: %.2f\n\n", wynik);
 }
 
 int main(void){
-    int tab[10];
-    losowanieWartosci(10, tab);
+    int tab[ILOSC];
+    losowanieWartosci(tab);
     int *wsk=tab;
     const int N=sizeof(tab)/sizeof(tab[0]);
-    printf("Tablica: ");
     wyswietlZakres(tab, tab+N);
     srednia(tab, tab+N);
     return 0;
