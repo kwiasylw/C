@@ -8,14 +8,12 @@ void sprawdzenieCzyPodanoOdpowiedniaIloscLiczbDoWygenerowania(int n){
         exit(1);
     }
     else{
-       printf("Ilosc liczb do wygenerowania to: %d\n", n);
+        printf("Ilosc liczb do wygenerowania to: %d\n", n);
     }
 }
 
 void generowanieDoPliku(int n, const char* filename){
-    FILE *out;
-    srand(time(NULL));
-    out=fopen(filename, "w");
+    FILE *out=fopen(filename, "w");
     if(out){
         for(int i=0; i<n; ++i){
             fprintf(out, "%d ", rand()%1000);
@@ -26,14 +24,14 @@ void generowanieDoPliku(int n, const char* filename){
     else{
         printf("ERROR\nWprowadzona bledna nazwe\n");
         generowanieDoPliku(n, filename);
-
     }
 }
 
 int main(int argc, char *argv[]){
     printf("Program generuje wybrana ilosc liczb calkowitych i zapisuje je do wybranego pliku\n");
+    srand(time(NULL));
     int n=atoi(argv[1]);
-    char* filename=argv[2];
+    const char* filename=argv[2];
     sprawdzenieCzyPodanoOdpowiedniaIloscLiczbDoWygenerowania(n);
     generowanieDoPliku(n, filename);
     getc(stdin);
