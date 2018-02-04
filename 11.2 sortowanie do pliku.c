@@ -2,58 +2,25 @@
 #include <stdlib.h>
 
 
-void pobieranieDanychZPlikuIZapisDoDrugiego(void);
-void generowanieDoPliku(int, int[]);
-void sortowanie(int, int[]);
-
-
-void pobieranieDanychZPlikuIZapisDoDrugiego(void){
-    FILE *in;
-    int i=0, a, totalNum, tab[100];
-    char  filename[20];
-    printf("Podaj nazwe pliku do pobrania danych: ");
-    scanf("%s", filename);
-    in=fopen(filename, "r");
-    if(in){
-        while(!feof(in)){
-            fscanf(in, "%d ", &a);
-            tab[i]=a;
-            i++;
-        }
-        fclose(in);
-        totalNum=i;
-        sortowanie(totalNum, tab);
-        generowanieDoPliku(totalNum, tab);
-    }
-    else{
-        printf("\nERROR\nWprowadzona bledna nazwe\n\n");
-        pobieranieDanychZPlikuIZapisDoDrugiego();
-    }
-}
-
-void generowanieDoPliku(int n, int tab[]){
-    FILE *out;
-    char filename[20];
-    printf("Podaj nazwe pliku docelowego: ");
-    scanf("%s", filename);
-    out=fopen(filename, "w");
+void generowanieDoPliku(int n, int tab[], const char* targetFilename){
+    FILE *out=fopen(targetFilename, "w");
     if(out){
         fprintf(out,"Posortowane liczby:\n");
         for(int i=0; i<n; ++i){
             fprintf(out, "%d ", tab[i]);
         }
-        printf("Dane zostaly zapisane w wybranym pliku.\n");
+        printf("Zapisano do pliku %s\n", targetFilename);
         fclose(out);
     }
     else{
-        printf("ERROR\nWprowadzona bledna nazwe\n\n");
-        generowanieDoPliku(n, tab);
+        printf("\nWprowadzona bledna nazwe pliku\n\n");
+        exit(1);
     }
 }
 
 void sortowanie(int n, int tab[]){
     int temp;
-    for(int i=0; i<n; ++i) {
+    for(int i=0; i<n; ++i){
         for(int j=0; j<(n-1); ++j){
             if(tab[j]>tab[j+1]){
                 temp=tab[j];
@@ -64,8 +31,34 @@ void sortowanie(int n, int tab[]){
     }
 }
 
-int main(){
-    printf("Program pobiera liczby z I programuje, sortuje je i zapisuje do II pliku.\n\n");
-    pobieranieDanychZPlikuIZapisDoDrugiego();
+void pobieranieDanychZPlikuIZapisDoDrugiego(const char* sourceFilename, const char* targetFilename){
+    FILE *in=fopen(sourceFilename, "r");
+    int i=0, a, totalNum, tab[100];
+    if(in){
+        while(!feof(in)){
+            fscanf(in, "%d ", &a);
+            tab[i]=a;
+            i++;
+        }
+        fclose(in);
+        printf("Dane pobrano z pliku %s\n", sourceFilename);
+        totalNum=i;
+        sortowanie(totalNum, tab);
+        generowanieDoPliku(totalNum, tab, targetFilename);
+    }
+    else{
+        printf("\nWprowadzona bledna nazwe pliku\n\n");
+        exit(1);
+    }
+}
+
+
+
+int main(int argc, char *argv[]){
+    printf("Program pobiera liczby z I programuje, sortuje je i zapisuje do II pliku.\n");
+    const char* sourceFilename=argv[1];
+    const char* targetFilename=argv[2];
+    pobieranieDanychZPlikuIZapisDoDrugiego(sourceFilename, targetFilename);
+    getc(stdin);
     return 0;
 }
