@@ -1,15 +1,16 @@
 #include <stdio.h>
-#include <ctype.h> //niestandardowa biblioteka
+#include <ctype.h>
+#include <time.h>
+#include <stdlib.h>
 #include "projektSudoku.h"
-
 
 int ogolnyLicznikNieustawionych=0;
 
-struct czesciSkladowePlanszy pobierzCzesci(int indeks){
-    struct czesciSkladowePlanszy zwroc;
-    zwroc.wiersz=(int)(indeks/LINIE); //zwraca nr wiersza
-    zwroc.kolumna=indeks%LINIE; //zwraca nr kolumny
-    zwroc.malyKwadratSudoku=LINIEWCZESCI*(int)(zwroc.wiersz/LINIEWCZESCI)+(int)(zwroc.kolumna/LINIEWCZESCI); //zwraca nr kwadratu
+CzesciSkladowePlanszy pobierzCzesci(int indeks){
+    CzesciSkladowePlanszy zwroc;
+    zwroc.wiersz=(int)(indeks/LINIE);
+    zwroc.kolumna=indeks%LINIE;
+    zwroc.malyKwadratSudoku=LINIEWCZESCI*(int)(zwroc.wiersz/LINIEWCZESCI)+(int)(zwroc.kolumna/LINIEWCZESCI);
     return zwroc;
 }
 
@@ -43,7 +44,6 @@ void pokazPlanszeSudoku(int* rozwiazanie){
     printf(" -----------------------------------");
 }
 
-
 int czyDanaWartoscJestJuzWTablicy(int* tablica, int wartosc, int dlugosc){
     for(int i=0; i<dlugosc; i++){
         if(tablica[i]==wartosc){
@@ -75,9 +75,77 @@ void wezKwadrat(int kolejne, int* zwroc){
     }
 }
 
+void losujDlaCiekawszegoUstawieniaWartosci(int losowa, int tablica1[], int tablica2[]){
+    switch(losowa){
+    case 1:
+        tablica1[0]=2;
+        tablica1[1]=1;
+        tablica1[2]=0;
+        break;
+    case 2:
+        tablica2[0]=2;
+        tablica2[1]=1;
+        tablica2[2]=0;
+        break;
+    case 3:
+        tablica1[0]=2;
+        tablica1[1]=1;
+        tablica1[2]=0;
+        tablica2[0]=2;
+        tablica2[1]=1;
+        tablica2[2]=0;
+        break;
+    }
+}
+
+void porzadkujKilkaTablic(int tablicaWierszyCalosci[], int tablicaKolumnCalosci[], int tablicaPrzedLinearyzacja[LINIE][LINIE]){
+    int i=0, j=0;
+    int indeksWierszyCalosci, indeksKolumnCalosci, wartoscStartowa;
+    int wierszeCzesci, kolumnyCzesci, wierszeCalosci, kolumnyCalosci;
+
+    for(indeksWierszyCalosci=0; indeksWierszyCalosci<LINIEWCZESCI; indeksWierszyCalosci++){
+        wierszeCalosci=tablicaWierszyCalosci[indeksWierszyCalosci];
+        for(indeksKolumnCalosci=0; indeksKolumnCalosci<LINIEWCZESCI; indeksKolumnCalosci++){
+            kolumnyCalosci=tablicaWierszyCalosci[indeksKolumnCalosci];
+            wartoscStartowa=wierszeCalosci*LINIE*LINIEWCZESCI+(kolumnyCalosci*LINIEWCZESCI);
+            for(wierszeCzesci=0; wierszeCzesci<LINIEWCZESCI; wierszeCzesci++){
+                for(kolumnyCzesci=0; kolumnyCzesci<LINIEWCZESCI; kolumnyCzesci++){
+                    tablicaPrzedLinearyzacja[i][j++]=wierszeCzesci*LINIE+kolumnyCzesci+wartoscStartowa;
+                }
+            }
+            i++;
+            j=0;
+        }
+    }
+}
+
+void losujAbyUniknacPustychPolNaKoncu(int losowa, int tablicaPrzedLinearyzacja[LINIE][LINIE]){
+    int zmiennaPomocnicza;
+    srand(time(NULL));
+    for(int i=0; i<LINIE; i++){
+        for(int j=0; j<LINIE; j++){
+            losowa=rand()%LINIE;
+            if(j==losowa){
+                continue;
+            }
+            zmiennaPomocnicza=tablicaPrzedLinearyzacja[i][j];
+            tablicaPrzedLinearyzacja[i][j]=tablicaPrzedLinearyzacja[i][losowa];
+            tablicaPrzedLinearyzacja[i][losowa]=zmiennaPomocnicza;
+        }
+    }
+}
+
+void linearyzujCalosc(int tablicaPrzedLinearyzacja[LINIE][LINIE]){
+    for(int i=0; i<LINIE; i++){
+        for(int j=0; j<LINIE; j++){
+            indeksy[i*LINIE+j]=tablicaPrzedLinearyzacja[i][j];
+        }
+    }
+}
+
 int ustawWartosci(int indeks, int niedozwolonaWartosc){
     int rzeczywistyIndeks=indeksy[indeks], elementy[LINIE];
-    struct czesciSkladowePlanszy bloczki=pobierzCzesci(rzeczywistyIndeks);
+    struct CzesciSkladowePlanszy bloczki=pobierzCzesci(rzeczywistyIndeks);
     for(int i=1; i<=LINIE; i++){
         if(niedozwolonaWartosc && i==niedozwolonaWartosc){
             continue;
@@ -131,27 +199,8 @@ void poczatkowoUstawWartosciNaZero(void){
     }
 }
 
-void losujDlaCiekawszegoUstawieniaWartosci(int losowa, int tablica1[], int tablica2[]){
-    switch(losowa){
-    case 1:
-        tablica1[0]=2;
-        tablica1[1]=1;
-        tablica1[2]=0;
-        break;
-    case 2:
-        tablica2[0]=2;
-        tablica2[1]=1;
-        tablica2[2]=0;
-        break;
-    case 3:
-        tablica1[0]=2;
-        tablica1[1]=1;
-        tablica1[2]=0;
-        tablica2[0]=2;
-        tablica2[1]=1;
-        tablica2[2]=0;
-        break;
-    }
+void czyszczenieBufora(void){
+    while(getchar()!='\n');
 }
 
 void wypiszNaEkranIPytajOZapisDoPliku(void){
@@ -161,24 +210,26 @@ void wypiszNaEkranIPytajOZapisDoPliku(void){
     getc(stdin);
     printf("\n\tTWOJA PLANSZA SUDOKU:\n");
     pokazPlanszeSudoku(nierozwiazane);
-    fflush(stdin);
+
     printf("\n\n\nCzy wyswietlic rozwiazanie na ekranie?\nWpisz t, jesli tak: ");
     wyswietlenieRozwiazania=getc(stdin);
     if(tolower(wyswietlenieRozwiazania)=='t'){
         printf("\n\n\tROZWIAZANA PLANSZA SUDOKU:\n");
         pokazPlanszeSudoku(rozwiazane);
     }
+
     printf("\n\nCzy zapisac plansze do pliku? Wpisz t jesli tak: ");
-    fflush(stdin);
+    czyszczenieBufora();
     czyZapisacPlanszeDoPliku=getc(stdin);
     if(tolower(czyZapisacPlanszeDoPliku)=='t'){
         printf("Plansza zostanie zapisana w pliku sudoku.txt\n");
+
         printf("\nCzy zapisac tez rozwiazanie do innego pliku? Wpisz t, jesli tak: ");
-        fflush(stdin);
+        czyszczenieBufora();
         czyZapisacRozwiazanieDoPliku=getc(stdin);
         if(tolower(czyZapisacRozwiazanieDoPliku)=='t'){
             printf("Rozwiazanie zostanie zapisane w pliku rozwiazanie.txt\n");
-            freopen("sudoku.txt", "w", stdout);     //niestandardowa funkcja
+            freopen("sudoku.txt", "w", stdout);
             printf("\n\n\tTWOJA PLANSZA SUDOKU:\n");
             pokazPlanszeSudoku(nierozwiazane);
             fclose(stdout);
