@@ -11,22 +11,31 @@ int niewiadoma[MAXILOSC];
 int rozwiazane[MAXILOSC];
 int nierozwiazane[MAXILOSC];
 
-struct czesciSkladowePlanszy{
+typedef struct CzesciSkladowePlanszy{
     int wiersz;
     int kolumna;
-    int malyKwadratSudoku; //kwadrat 3x3, cala plansza to 9 takich kwadratow
-};
+    int malyKwadratSudoku;
+}CzesciSkladowePlanszy;
 
-void pokazPlanszeSudoku(int*);
-struct czesciSkladowePlanszy pobierzCzesci(int);
-int czyDanaWartoscJestJuzWTablicy(int*, int, int);
-void wezPoziome(int, int*);
-void wezPionowe(int, int*);
-void wezKwadrat(int, int*);
-int ustawWartosci(int, int);
-void wezZPowrotem(int);
-void poczatkowoUstawWartosciNaZero(void);
-void losujDlaCiekawszegoUstawieniaWartosci(int, int [], int []);
+
+CzesciSkladowePlanszy pobierzCzesci(int indeks);
+
+void pokazPlanszeSudoku(int* rozwiazanie);
 void wypiszNaEkranIPytajOZapisDoPliku(void);
+
+void poczatkowoUstawWartosciNaZero(void);
+int ustawWartosci(int indeks, int niedozwolonaWartosc);
+int czyDanaWartoscJestJuzWTablicy(int* tablica, int wartosc, int dlugosc);
+void wezZPowrotem(int iloscNieustawionych);
+void czyszczenieBufora(void);
+
+void losujDlaCiekawszegoUstawieniaWartosci(int losowa, int tablica1[], int tablica2[]);
+void losujAbyUniknacPustychPolNaKoncu(int losowa, int tablicaPrzedLinearyzacja[LINIE][LINIE]);
+void linearyzujCalosc(int tablica[LINIE][LINIE]);
+void porzadkujKilkaTablic(int tablicaWierszyCalosci[], int tablicaKolumnCalosci[], int tablicaPrzedLinearyzacja[LINIE][LINIE]);
+
+void wezPoziome(int wiersz, int* zwroc);
+void wezPionowe(int kolumna, int* zwroc);
+void wezKwadrat(int kolejne, int* zwroc);
 
 #endif
