@@ -16,16 +16,16 @@ int pobieranieWybranejCzesciAktualnejDaty(char* symbolDlaWybranejCzesciDaty){
 
 int uzyskanieDniaTygodniaPierwszegoDniaMiesiaca(int aktualnyDzienMiesiaca, int aktualnyDzienTygodnia){
     for(int i=aktualnyDzienMiesiaca-1; i>=1; i--){
-        aktualnyDzienTygodnia--;
         if(aktualnyDzienTygodnia==0){
             aktualnyDzienTygodnia+=7;
         }
+        aktualnyDzienTygodnia--;
     }
     int dzienPierwszegoDniaMiesiaca=aktualnyDzienTygodnia;
     return dzienPierwszegoDniaMiesiaca;
 }
 
-int przypisanieOdpowiedniejIlosciDniDlaDanegoMiesiaca(int dni, int miesiac){
+int przypisanieOdpowiedniejIlosciDniDlaDanegoMiesiaca(int dni, int miesiac, int rok){
     if(miesiac==1 || miesiac==3 || miesiac==5 || miesiac==7 || miesiac==8 || miesiac==10 || miesiac==12){
         dni=31;
     }
@@ -33,24 +33,12 @@ int przypisanieOdpowiedniejIlosciDniDlaDanegoMiesiaca(int dni, int miesiac){
         dni=30;
     }
     else if(miesiac==2){
-        int przestepny;
-        printf("Czy rok jest przestepny? Wpisz 1(tak) lub 2(nie): ");
-        scanf("%d", &przestepny);
-        switch(przestepny){
-            case 1:
-                dni=29;
-                break;
-            case 2:
-                dni=28;
-                break;
-           default:
-                printf("ERROR. Wpisz T lub N.");
-                break;
+        if (rok%4==0){
+            dni=29;
         }
-    }
-    else{
-        printf("ERROR. Podaj liczbe od 1 do 12.");
-        scanf("%d", &miesiac);
+        else{
+            dni=28;
+        }
     }
     return dni;
 }
@@ -74,9 +62,11 @@ int main(void){
     int aktualnyDzienMiesiaca=pobieranieWybranejCzesciAktualnejDaty("%d");
     int aktualnyDzienTygodnia=pobieranieWybranejCzesciAktualnejDaty("%w");
     int aktualnyMiesiac=pobieranieWybranejCzesciAktualnejDaty("%m");
+    int aktualnyRok=pobieranieWybranejCzesciAktualnejDaty("%Y");
     int start=uzyskanieDniaTygodniaPierwszegoDniaMiesiaca(aktualnyDzienMiesiaca, aktualnyDzienTygodnia);
-    int dni=przypisanieOdpowiedniejIlosciDniDlaDanegoMiesiaca(dni, aktualnyMiesiac);
+    int dni=przypisanieOdpowiedniejIlosciDniDlaDanegoMiesiaca(dni, aktualnyMiesiac, aktualnyRok);
     printf("\t***Program wyswietla aktualny miesiac***\n");
     wypisywanieKalendarzaLamiacCo7Dni(start, dni);
+    printf("\n\nDzisiejsza data: %d.%d.%d\n", aktualnyDzienMiesiaca, aktualnyMiesiac, aktualnyRok);
     return 0;
 }
